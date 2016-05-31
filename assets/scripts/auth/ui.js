@@ -4,6 +4,7 @@ const app = require('../app.js')
 
 const success = (data) => {
   console.log(data);
+  console.log("success!")
   $('#sign-up').children().children('.remove').val("");
   $('#change-password').children().children('.remove').val("")
 };
