@@ -13,7 +13,13 @@ const failure = (error) => {
   console.error(error);
 };
 
+const updateSuccess = (data) => {
+  console.log(data);
+  console.log("YOU WON BITCHES")
+}
+
 module.exports = {
   success,
-  failure
+  failure,
+  updateSuccess,
 };

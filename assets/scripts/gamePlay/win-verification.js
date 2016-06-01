@@ -1,4 +1,7 @@
-let xWon = function() {
+'use strict';
+
+const xWon = function() {
+  let won = false;
   if((cells[0] === "x" && cells[1] ==="x" && cells[2]==="x") ||
     (cells[3] === "x" && cells[4]==="x" && cells[5] ==="x") ||
     (cells[6] === "x" && cells[7]==="x" && cells[8] ==="x") ||
@@ -8,12 +11,11 @@ let xWon = function() {
     (cells[0] === "x" && cells[4]==="x" && cells[8] ==="x") ||
     (cells[2] === "x" && cells[4]==="x" && cells[6] ==="x")) {
   console.log("x won!");
-  //clear game board
-  //make over = true
+  won = true;
   }
 };
 
-let yWon = function() {
+const yWon = function() {
   if((cells[0] === "y" && cells[1] ==="y" && cells[2]==="y") ||
     (cells[3] === "y" && cells[4]==="y" && cells[5] ==="y") ||
     (cells[6] === "y" && cells[7]==="y" && cells[8] ==="y") ||

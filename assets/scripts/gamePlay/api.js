@@ -12,6 +12,18 @@ const createNewGame = () => {
   });
 };
 
+const updateGame = (gameObject) => {
+  console.log("you are here");
+  return $.ajax({
+    url: app.host + '/games/' + app.game.id,
+    method: 'PATCH',
+    data: gameObject,
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    }
+  });
+};
+
 // const joinGame = () => {
 //   return $.ajax({
 //     url: app.host + '/games/' + app.id,
@@ -25,5 +37,5 @@ const createNewGame = () => {
 
 module.exports = {
   createNewGame,
-  joinGame,
+  updateGame,
 };
