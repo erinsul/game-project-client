@@ -3,6 +3,7 @@ const winVerify = require('./win-verification.js');
 const api = require('./api');
 const ui = require('./ui');
 const app = require('../app.js');
+let cells = ["", "", "", "", "", "", "", "", ""];
 
 const onNewGame = function (event){
   event.preventDefault();
@@ -21,43 +22,33 @@ const move = function(){
       "over": false
   }
 };
-
 const setGameObjectIndex = function(id) {
 switch(id) {
   case "zero" :
-    console.log("zero!");
     gameObject.game.cell.index = 0;
     break;
   case "one" :
-    console.log("one!");
     gameObject.game.cell.index = 1;
     break;
   case "two" :
-    console.log("two!");
     gameObject.game.cell.index = 2;
     break;
   case "three" :
-    console.log("three!");
     gameObject.game.cell.index = 3;
     break;
   case "four" :
-    console.log("four!");
     gameObject.game.cell.index = 4;
     break;
   case "five" :
-    console.log("five!");
     gameObject.game.cell.index = 5;
     break;
   case "six" :
-    console.log("six!");
     gameObject.game.cell.index = 6;
     break;
   case "seven" :
-    console.log("seven!");
     gameObject.game.cell.index = 7;
     break;
   case "eight" :
-    console.log("eight!");
     gameObject.game.cell.index = 8;
     break;
 }
@@ -68,26 +59,39 @@ switch(id) {
         $(this).text("X");
         gameObject.game.cell.value = "x";
         setGameObjectIndex(this.id);
+        cells[gameObject.game.cell.index] = "x";
+        console.log(cells);
+        if(winVerify.win(cells, "x")){
+          gameObject.game.over = true;
+          console.log("x won!");
+        }
         console.log(gameObject);
         api.updateGame(gameObject)
         .done(ui.updateSuccess)
         .fail(ui.failure);
-        // if(winVerify.xWon){
-        //   gameObject.game.over = true;
-        // }
+        if(gameObject.game.over){
+          app.currentMove = "";
+        } else {
         app.currentMove = "o";
-      //also need to add it into the cells array somehow--update will send whole game back
+        }
     }
-  } else if (app.currentMove === "o"){
+  } else if (app.currentMove === "o") {
   if($(this).text() === ""){
   $(this).text("O");
   gameObject.game.cell.value = "o";
   setGameObjectIndex(this.id);
+  cells[gameObject.game.cell.index] = "o";
+  if(winVerify.win(cells, "o")){
+    gameObject.game.over = true;
+  }
   api.updateGame(gameObject)
   .done(ui.updateSuccess)
   .fail(ui.failure);
+  if(gameObject.game.over){
+    app.currentMove = "";
+  } else {
   app.currentMove = "x";
-  //also need to run win functions to check
+  }
   }
 }
 };

@@ -15,7 +15,6 @@ const failure = (error) => {
 
 const updateSuccess = (data) => {
   console.log(data);
-  console.log("YOU WON BITCHES")
 }
 
 module.exports = {
