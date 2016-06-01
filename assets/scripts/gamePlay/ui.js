@@ -7,7 +7,6 @@ const success = (data) => {
   app.currentMove= "x";
   console.log(app);
   console.log(data);
-  console.log("you are player x")
 };
 
 const failure = (error) => {

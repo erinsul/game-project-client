@@ -11,23 +11,22 @@ const onNewGame = function (event){
   .fail(ui.failure);
 };
 
-// const onJoinGame = function(event){
-//   event.preventDefault();
-//   api.joinGame()
-//   .done(console.log("yay"))
-//   .fail(ui.failure);
-// }
-
 const move = function(){
   if(app.currentMove === "x"){
       if($(this).text() === ""){
       $(this).text("X");
       app.currentMove = "o";
+      //api.update function goes here to send the cell data
+      //also need some kind of update to my "cells" array
+      //also need to run win functions to check
     }
   } else if (app.currentMove === "o")
   if($(this).text() === ""){
   $(this).text("O");
   app.currentMove = "x";
+  //api.update function goes here to send the cell data
+  //also need some kind of update to my "cells" array
+  //also need to run win functions to check
 }
 };
 
@@ -49,3 +48,10 @@ module.exports = {
   gameHandlers,
   move,
 };
+
+// const onJoinGame = function(event){
+//   event.preventDefault();
+//   api.joinGame()
+//   .done(console.log("yay"))
+//   .fail(ui.failure);
+// }
