@@ -21,7 +21,7 @@ const move = function(){
       "over": false
   }
 };
-
+  let cells = ["", "", "", "", "", "", "", "", ""]
 const setGameObjectIndex = function(id) {
 switch(id) {
   case "zero" :
@@ -68,13 +68,14 @@ switch(id) {
         $(this).text("X");
         gameObject.game.cell.value = "x";
         setGameObjectIndex(this.id);
+        cells[gameObject.game.cell.index] = "x"
+        if(winVerify.xWon){
+          gameObject.game.over = true;
+        }
         console.log(gameObject);
         api.updateGame(gameObject)
         .done(ui.updateSuccess)
         .fail(ui.failure);
-        // if(winVerify.xWon){
-        //   gameObject.game.over = true;
-        // }
         app.currentMove = "o";
       //also need to add it into the cells array somehow--update will send whole game back
     }

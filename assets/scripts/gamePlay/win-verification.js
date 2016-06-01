@@ -1,7 +1,6 @@
 'use strict';
 
 const xWon = function() {
-  let won = false;
   if((cells[0] === "x" && cells[1] ==="x" && cells[2]==="x") ||
     (cells[3] === "x" && cells[4]==="x" && cells[5] ==="x") ||
     (cells[6] === "x" && cells[7]==="x" && cells[8] ==="x") ||
@@ -11,7 +10,6 @@ const xWon = function() {
     (cells[0] === "x" && cells[4]==="x" && cells[8] ==="x") ||
     (cells[2] === "x" && cells[4]==="x" && cells[6] ==="x")) {
   console.log("x won!");
-  won = true;
   }
 };
 
