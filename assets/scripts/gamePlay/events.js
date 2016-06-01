@@ -112,5 +112,4 @@ $('#eight').on('click', move);
 
 module.exports = {
   gameHandlers,
-  move,
 };
