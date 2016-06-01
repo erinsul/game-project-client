@@ -13,6 +13,7 @@ const onNewGame = function (event){
 };
 
 const move = function(){
+  //data that needs to be sent with patch req
   let gameObject = {
     "game": {
       "cell": {
@@ -53,45 +54,65 @@ switch(id) {
     break;
 }
 };
-
+//moving as x
   if(app.currentMove === "x"){
+    //prevents moving if already occupied
       if($(this).text() === ""){
+        //sets text on board
         $(this).text("X");
+        //sets cell value on game object
         gameObject.game.cell.value = "x";
+        //sets index on game object
         setGameObjectIndex(this.id);
+        //sets cells array used to test winner
         cells[gameObject.game.cell.index] = "x";
-        console.log(cells);
+        //if someone won
         if(winVerify.win(cells, "x")){
+          //sets the game over to true
           gameObject.game.over = true;
           console.log("x won!");
         }
-        console.log(gameObject);
+        //sends fully updated game object
         api.updateGame(gameObject)
         .done(ui.updateSuccess)
         .fail(ui.failure);
+        //if game over
         if(gameObject.game.over){
+          //blocks another move
           app.currentMove = "";
         } else {
+          //otherwise, switches to o
         app.currentMove = "o";
         }
     }
   } else if (app.currentMove === "o") {
-  if($(this).text() === ""){
-  $(this).text("O");
-  gameObject.game.cell.value = "o";
-  setGameObjectIndex(this.id);
-  cells[gameObject.game.cell.index] = "o";
-  if(winVerify.win(cells, "o")){
-    gameObject.game.over = true;
-  }
-  api.updateGame(gameObject)
-  .done(ui.updateSuccess)
-  .fail(ui.failure);
-  if(gameObject.game.over){
-    app.currentMove = "";
-  } else {
-  app.currentMove = "x";
-  }
+    //prevents moving if already occupied
+    if($(this).text() === ""){
+      //sets text on board
+      $(this).text("O");
+      //sets game object cell value
+      gameObject.game.cell.value = "o";
+      //sets game object cell index
+      setGameObjectIndex(this.id);
+      //sets cells array
+      cells[gameObject.game.cell.index] = "o";
+      //if there is a winner
+      if(winVerify.win(cells, "o")){
+        //sets game object over to true
+        gameObject.game.over = true;
+      }
+      //sends game object in patch
+      api.updateGame(gameObject)
+      .done(ui.updateSuccess)
+      .fail(ui.failure);
+      //if game over
+      if(gameObject.game.over){
+        //prevent another move
+        app.currentMove = "";
+      } else {
+        //otherwise, switch to x turn
+        app.currentMove = "x";
+      }
   }
 }
 };
