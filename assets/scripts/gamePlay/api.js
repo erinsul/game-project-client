@@ -13,7 +13,6 @@ const createNewGame = () => {
 };
 
 const updateGame = (gameObject) => {
-  console.log("you are here");
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
