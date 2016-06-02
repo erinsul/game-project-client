@@ -3,7 +3,7 @@ const winVerify = require('./win-verification.js');
 const api = require('./api');
 const ui = require('./ui');
 const app = require('../app.js');
-let cells = ["", "", "", "", "", "", "", "", ""];
+let cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 
 const onNewGame = function (event){
   event.preventDefault();
@@ -71,7 +71,10 @@ switch(id) {
         if(winVerify.win(cells, "x")){
           //sets the game over to true
           gameObject.game.over = true;
-          console.log("x won!");
+          console.log("x won!")
+        } else if(winVerify.tie(cells)) {
+          gameObject.game.over = true;
+          console.log("it's a tie!")
         }
         //sends fully updated game object
         api.updateGame(gameObject)
@@ -81,6 +84,7 @@ switch(id) {
         if(gameObject.game.over){
           //blocks another move
           app.currentMove = "";
+          console.log("game over!!!")
         } else {
           //otherwise, switches to o
         app.currentMove = "o";

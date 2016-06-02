@@ -9,12 +9,18 @@ const win = function(array, marker) {
     (array[2] === marker && array[5]===marker && array[8] ===marker) ||
     (array[0] === marker && array[4]===marker && array[8] ===marker) ||
     (array[2] === marker && array[4]===marker && array[6] ===marker)) {
-      console.log("success!")
       winState = true;
   }
   return winState
 };
 
+const tie = function(array) {
+  if(!(array.includes(" "))){
+    console.log("It's a tie!");
+  }
+};
+
 module.exports = {
   win,
+  tie,
 };
