@@ -23,10 +23,7 @@ const move = function(){
       "over": false
   }
 };
-<<<<<<< HEAD
-  let cells = ["", "", "", "", "", "", "", "", ""]
-=======
->>>>>>> winner
+
 const setGameObjectIndex = function(id) {
 switch(id) {
   case "zero" :
@@ -68,16 +65,6 @@ switch(id) {
         gameObject.game.cell.value = "x";
         //sets index on game object
         setGameObjectIndex(this.id);
-<<<<<<< HEAD
-        cells[gameObject.game.cell.index] = "x"
-        if(winVerify.xWon){
-          gameObject.game.over = true;
-        }
-        console.log(gameObject);
-        api.updateGame(gameObject)
-        .done(ui.updateSuccess)
-        .fail(ui.failure);
-=======
         //sets cells array used to test winner
         cells[gameObject.game.cell.index] = "x";
         //if someone won
@@ -96,7 +83,6 @@ switch(id) {
           app.currentMove = "";
         } else {
           //otherwise, switches to o
->>>>>>> winner
         app.currentMove = "o";
         }
     }
