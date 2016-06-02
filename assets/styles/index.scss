@@ -6,6 +6,6 @@ article {
   section {
     @include make-xs-column(4);
     border: 1px solid #000;
-    min-height: 50px;
+    height: 30.333333vh;
   }
 }

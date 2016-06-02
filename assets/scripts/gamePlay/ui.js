@@ -17,8 +17,17 @@ const updateSuccess = (data) => {
   console.log(data);
 };
 
+const logSingleGame = function(data) {
+  console.log(data.game);
+};
+const logGames = function(data){
+  console.table(data.games);
+};
+
 module.exports = {
   createGameSuccess,
   failure,
   updateSuccess,
+  logSingleGame,
+  logGames,
 };

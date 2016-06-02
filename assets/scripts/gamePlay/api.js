@@ -23,6 +23,30 @@ const updateGame = (gameObject) => {
   });
 };
 
+const getGameIndex = function() {
+  return $('#gameIndex').val();
+};
+
+const getGames = function(){
+  return $.ajax({
+    url: app.host + '/games/',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    }
+  });
+};
+
+const getSingleGame = function(gameID){
+  return $.ajax({
+    url: app.host + '/games/' + gameID,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    }
+  });
+};
+
 // const joinGame = () => {
 //   return $.ajax({
 //     url: app.host + '/games/' + app.id,
@@ -37,4 +61,7 @@ const updateGame = (gameObject) => {
 module.exports = {
   createNewGame,
   updateGame,
+  getGameIndex,
+  getGames,
+  getSingleGame,
 };
