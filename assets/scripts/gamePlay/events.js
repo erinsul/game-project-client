@@ -8,7 +8,7 @@ let cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
 const onNewGame = function (event){
   event.preventDefault();
   api.createNewGame()
-  .done(ui.success)
+  .done(ui.createGameSuccess)
   .fail(ui.failure);
 };
 
@@ -71,10 +71,10 @@ switch(id) {
         if(winVerify.win(cells, "x")){
           //sets the game over to true
           gameObject.game.over = true;
-          console.log("x won!")
+          console.log("x won!");
         } else if(winVerify.tie(cells)) {
           gameObject.game.over = true;
-          console.log("it's a tie!")
+          console.log("it's a tie!");
         }
         //sends fully updated game object
         api.updateGame(gameObject)
@@ -84,7 +84,10 @@ switch(id) {
         if(gameObject.game.over){
           //blocks another move
           app.currentMove = "";
-          console.log("game over!!!")
+          app.game = "";
+          $('#newGame').hide();
+          $('#clearBoard').show();
+          console.log("game over!!!");
         } else {
           //otherwise, switches to o
         app.currentMove = "o";
@@ -114,6 +117,10 @@ switch(id) {
       if(gameObject.game.over){
         //prevent another move
         app.currentMove = "";
+        app.game = "";
+        $('#newGame').hide();
+        $('#clearBoard').show();
+        //
       } else {
         //otherwise, switch to x turn
         app.currentMove = "x";
@@ -121,6 +128,14 @@ switch(id) {
   }
 }
 };
+
+const onClearBoard = () =>{
+  event.preventDefault();
+  cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "];
+  $('.container').children().children('section').text("");
+  $('#clearBoard').hide();
+  $('#newGame').show();
+}
 
 const gameHandlers = () => {
 $('#newGame').on('click', onNewGame);
@@ -134,6 +149,7 @@ $('#five').on('click', move);
 $('#six').on('click', move);
 $('#seven').on('click', move);
 $('#eight').on('click', move);
+$('#clearBoard').on('click', onClearBoard);
 };
 
 module.exports = {

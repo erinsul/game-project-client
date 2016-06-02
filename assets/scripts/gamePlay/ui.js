@@ -1,8 +1,8 @@
 'use strict';
 
-const app = require('../app.js')
+const app = require('../app.js');
 
-const success = (data) => {
+const createGameSuccess = (data) => {
   app.game = data.game;
   app.currentMove= "x";
   console.log(app);
@@ -15,10 +15,10 @@ const failure = (error) => {
 
 const updateSuccess = (data) => {
   console.log(data);
-}
+};
 
 module.exports = {
-  success,
+  createGameSuccess,
   failure,
   updateSuccess,
 };
