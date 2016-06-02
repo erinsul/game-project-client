@@ -54,11 +54,10 @@ const setGameObject = (marker, id) =>{
           //sets the game over to true
           gameObject.game.over = true;
           console.log(marker + " won!");
-        } else if(winVerify.tie(cells)) {
+        } else if (winVerify.tie(cells)) {
           gameObject.game.over = true;
-          console.log("it's a tie!");
+          console.log("it's a tie! this needs to be in the ui!")
         }
-        console.log(cells);
         return gameObject;
 };
 

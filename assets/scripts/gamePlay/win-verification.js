@@ -16,7 +16,7 @@ const win = function(array, marker) {
 
 const tie = function(array) {
   if(!(array.includes(" "))){
-    console.log("It's a tie!");
+    return true;
   }
 };
 
