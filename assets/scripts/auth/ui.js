@@ -1,12 +1,12 @@
 'use strict';
 
-const app = require('../app.js')
+const app = require('../app.js');
+const uiGen = require('../uiGeneral.js');
 
-const success = (data) => {
+const signUpSuccess = (data) => {
   console.log(data);
-  console.log("success!")
-  $('#sign-up').children().children('.remove').val("");
-  $('#change-password').children().children('.remove').val("")
+  uiGen.hideSignUpForm();
+  $('#current-message').text("You have successfully signed up!");
 };
 
 const failure = (error) => {
@@ -16,23 +16,36 @@ const failure = (error) => {
 const signInSuccess = function(data){
   app.user = data.user;
   console.log(app);
-  $('#sign-in').children().children('.remove').val("")
-  $('#sign-up').hide();
-  $('#sign-in').children().children('legend').text("You are signed in as " + app.user.email);
-  $('#sign-in').children().children('input').hide();
+  uiGen.hideSignInForm();
+  $('#sign-in-form').children().children('.remove').val("");
+  uiGen.hideSignUpForm();
+  uiGen.showChangePassword();
+  uiGen.showSignOut();
+  $('#current-message').text("You are signed in as " + app.user.email);
+  $('#newGame').show();
 };
+
+const changePasswordSuccess = function(){
+  uiGen.hideChangePasswordForm();
+  $('#change-password-form').children().children('.remove').val("");
+  $('#current-message').text("You have successfully changed your password!");
+}
 
 const signOutSuccess = function(){
   app.user = null;
   console.log(app);
-  $('#sign-up').show();
-  $('#sign-in').children().children('legend').text("Sign In!");
-  $('#sign-in').children().children('input').show();
-}
+  uiGen.hideSignUpForm();
+  uiGen.hideSignInForm();
+  uiGen.hideChangePassword();
+  uiGen.hideSignOut();
+  $('#current-message').text("You must sign in to play!");
+  $('#newGame').hide();
+};
 
 module.exports = {
   failure,
-  success,
+  signUpSuccess,
   signInSuccess,
   signOutSuccess,
+  changePasswordSuccess,
 };

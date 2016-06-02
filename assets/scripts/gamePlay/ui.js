@@ -7,6 +7,7 @@ const createGameSuccess = (data) => {
   app.currentMove= "x";
   console.log(app);
   console.log(data);
+  $('#current-message').text("A new game has begun! You are X.");
 };
 
 const failure = (error) => {

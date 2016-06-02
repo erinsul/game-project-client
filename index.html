@@ -7,11 +7,13 @@
     </head>
     <body class="container-fluid">
       <header>
-        <span>Tic Tac Toe</span>
-        <input type="submit" name="signUp" value="Sign Up!">
-        <input type="submit" name="signIn" value="Sign In!">
+        <span>Erin's Exciting Tic Tac Toe</span>
+        <button id="show-sign-up">Sign Up</button>
+        <button id="show-sign-in">Sign In</button>
+        <button id="show-change-password">Change Password</button>
+        <button id="sign-out">Sign Out!</button>
       </header>
-      <form id="sign-up">
+      <form id="sign-up-form">
         <fieldset>
           <legend>Sign up to play!</legend>
           <input type="text" class="remove" name="credentials[email]" placeholder="email">
@@ -20,7 +22,7 @@
           <input type="submit" name="submit" value="Sign up!">
         </fieldset>
       </form>
-      <form id="sign-in">
+      <form id="sign-in-form">
           <fieldset>
             <legend>Sign in to play!</legend>
             <input type="text" class="remove" name="credentials[email]" placeholder="email">
@@ -28,7 +30,7 @@
             <input type="submit" name="submit" value="Sign in!">
           </fieldset>
       </form>
-      <form id="change-password">
+      <form id="change-password-form">
         <fieldset>
           <legend>Change Password</legend>
           <input type="password" class="remove" name="passwords[old]" placeholder="old password">
@@ -36,10 +38,10 @@
           <input type="submit" name="submit" value="Change Password">
         </fieldset>
       </form>
-      <form id="sign-out">
-        <input type="submit" name="submit" value="Sign out!">
-      </form>
+      <div>
+      <h3 id="current-message">You must sign in to play.</h3>
       <h1>Play Tic Tac Toe!</h1>
+      </div>
       <form>
         <button id="newGame">New Game</button>
         <button id="clearBoard">Clear the board to play again!</button>

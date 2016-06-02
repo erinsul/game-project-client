@@ -9,7 +9,7 @@ const onSignUp = function (event) {
   let data = getFormFields(event.target);
   event.preventDefault();
   api.signUp(data)
-  .done(ui.success)
+  .done(ui.signUpSuccess)
   .fail(ui.failure);
 };
 
@@ -25,7 +25,7 @@ const onChangePassword = function(event){
   let data = getFormFields(event.target);
   event.preventDefault();
   api.changePassword(data)
-  .done(ui.success)
+  .done(ui.changePasswordSuccess)
   .fail(ui.failure);
 };
 
@@ -37,10 +37,10 @@ const onSignOut = function(event){
 }
 
 const addHandlers = () => {
-  $('#sign-up').on('submit', onSignUp);
-  $('#sign-in').on('submit', onSignIn);
-  $('#change-password').on('submit', onChangePassword);
-  $('#sign-out').on('submit', onSignOut);
+  $('#sign-up-form').on('submit', onSignUp);
+  $('#sign-in-form').on('submit', onSignIn);
+  $('#change-password-form').on('submit', onChangePassword);
+  $('#sign-out').on('click', onSignOut);
 };
 
 module.exports = {
