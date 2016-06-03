@@ -7,8 +7,7 @@ const gameBoard = require('./gameBoard.js');
 const onNewGame = function (event){
   event.preventDefault();
   api.createNewGame()
-  .done(ui.createGameSuccess)
-  .fail(ui.failure);
+  .done(ui.createGameSuccess);
 };
 
 const move = function(){
@@ -25,9 +24,7 @@ const move = function(){
         //sets game object
         let gameObject = gameBoard.setGameObject(app.currentMove, id);
         //sends fully updated game object
-        api.updateGame(gameObject)
-        .done(ui.updateSuccess)
-        .fail(ui.failure);
+        api.updateGame(gameObject);
         //if game over
         if(gameObject.game.over){
           gameBoard.gameOver();
@@ -53,18 +50,11 @@ const move = function(){
 const onGetGame = (event) => {
   event.preventDefault();
   api.getGames()
-  .done(ui.logGames)
-  .fail(ui.failure);
-  // let gameIndex = api.getGameIndex();
-  // if(gameIndex){
-  // api.getSingleGame(gameIndex)
-  // .done(ui.logSingleGame)
-  // .fail(ui.failure);
+  .done(ui.logGames);
 };
 
 const gameHandlers = () => {
 $('#newGame').on('click', onNewGame);
-// $('#joinGame').on('click', onJoinGame);
 $('.container').children().children('section').on('click', move);
 $('#clearBoard').on('click', gameBoard.onClearBoard);
 $('#getGames').on('click', onGetGame);

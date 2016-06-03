@@ -3,19 +3,13 @@
 const app = require('../app.js');
 const uiGen = require('../uiGeneral.js');
 
-const signUpSuccess = (data) => {
-  console.log(data);
+const signUpSuccess = () => {
   uiGen.hideSignUpForm();
   $('#current-message').text("You have successfully signed up!");
 };
 
-const failure = (error) => {
-  console.error(error);
-};
-
 const signInSuccess = function(data){
   app.user = data.user;
-  console.log(app);
   uiGen.hideSignInForm();
   $('#sign-in-form').children().children('.remove').val("");
   uiGen.hideSignUpForm();
@@ -36,7 +30,6 @@ const signOutSuccess = function(){
   app.user = null;
   app.currentMove = null;
   app.game = null;
-  console.log(app);
   uiGen.hideSignUpForm();
   uiGen.hideSignInForm();
   uiGen.hideChangePassword();
@@ -48,11 +41,9 @@ const signOutSuccess = function(){
   $('#fetch-games').hide();
   $('#fetch-games').children('span').text("");
   $('#num-of-games-played').text("How many games have you played? Want to find out? Hit");
-  console.log(app);
 };
 
 module.exports = {
-  failure,
   signUpSuccess,
   signInSuccess,
   signOutSuccess,
