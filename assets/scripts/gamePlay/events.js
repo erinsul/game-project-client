@@ -15,7 +15,11 @@ const move = function(){
     //prevents moving if already occupied
       if($(this).text() === ""){
         //sets text on board
-        $(this).text(app.currentMove);
+        if(app.currentMove === "x"){
+        $(this).html('<img src ="assets/images/Crossbones.jpg"/>');
+      } else if (app.currentMove === "o") {
+        $(this).html('<img src ="assets/images/Skull.jpg"/>')
+      }
         let id = this.id;
         //sets game object
         let gameObject = gameBoard.setGameObject(app.currentMove, id);
