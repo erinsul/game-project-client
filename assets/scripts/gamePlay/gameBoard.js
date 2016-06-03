@@ -48,6 +48,7 @@ const setGameObject = (marker, id) =>{
     //sets index on game object
     setGameObjectIndex(gameObject, id);
     //sets cells array used to test winner
+    if(marker === "x") {}
     cells[gameObject.game.cell.index] = marker;
         //if someone won
         if(winVerify.win(cells, marker)){

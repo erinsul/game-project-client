@@ -12,6 +12,7 @@ const onNewGame = function (event){
 };
 
 const move = function(){
+  if(app.game){
     //prevents moving if already occupied
       if($(this).text() === ""){
         //sets text on board
@@ -40,6 +41,7 @@ const move = function(){
         }
     }
   }
+}
 };
 
 const onGetGame = (event) => {
