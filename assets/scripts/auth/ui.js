@@ -45,6 +45,7 @@ const signOutSuccess = function(){
   $('.container').children().children('section').text("");
   $('#fetch-games').hide();
   $('#fetch-games').children('span').text("");
+  $('#num-of-games-played').text("How many games have you played? Want to find out? Hit");
 };
 
 module.exports = {

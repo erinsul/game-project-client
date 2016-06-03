@@ -8,6 +8,7 @@ const createGameSuccess = (data) => {
   console.log(app);
   console.log(data);
   $('#current-message').text("A new game has begun! You are X.");
+  $('#newGame').hide();
 };
 
 const failure = (error) => {
@@ -26,7 +27,6 @@ const logSingleGame = function(data) {
   console.log(data.game);
 };
 const logGames = function(data){
-  console.log(app.user);
   $('#num-of-games-played').text(app.user.email + ", you have played " +
   data.games.length + " games!")
 };

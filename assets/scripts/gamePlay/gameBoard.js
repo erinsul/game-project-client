@@ -73,7 +73,6 @@ const onClearBoard = () =>{
 const gameOver = () => {
       app.currentMove = "";
       app.game = "";
-      $('#newGame').hide();
       $('#clearBoard').show();
 };
 
