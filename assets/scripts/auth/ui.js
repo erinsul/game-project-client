@@ -34,6 +34,8 @@ const changePasswordSuccess = function(){
 
 const signOutSuccess = function(){
   app.user = null;
+  app.currentMove = null;
+  app.game = null;
   console.log(app);
   uiGen.hideSignUpForm();
   uiGen.hideSignInForm();
@@ -46,6 +48,7 @@ const signOutSuccess = function(){
   $('#fetch-games').hide();
   $('#fetch-games').children('span').text("");
   $('#num-of-games-played').text("How many games have you played? Want to find out? Hit");
+  console.log(app);
 };
 
 module.exports = {
