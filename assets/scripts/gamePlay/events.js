@@ -30,10 +30,12 @@ const move = function(){
         switch(app.currentMove){
         case "x" :
           app.currentMove = "o";
+          ui.switchPlayer("o");
           break;
           //otherwise, switches to x
         case "o" :
         app.currentMove = "x";
+        ui.switchPlayer("x");
         break;
         }
     }

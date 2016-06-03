@@ -53,10 +53,10 @@ const setGameObject = (marker, id) =>{
         if(winVerify.win(cells, marker)){
           //sets the game over to true
           gameObject.game.over = true;
-          console.log(marker + " won!");
+          $('#current-message').text("Game Over! " + marker + " won!");
         } else if (winVerify.tie(cells)) {
           gameObject.game.over = true;
-          console.log("it's a tie! this needs to be in the ui!")
+          $('#current-message').text("Game Over! It's a tie!")
         }
         return gameObject;
 };
@@ -67,6 +67,7 @@ const onClearBoard = () =>{
   $('.container').children().children('section').text("");
   $('#clearBoard').hide();
   $('#newGame').show();
+  $('#current-message').text("Press 'new game' to play again!");
 };
 
 const gameOver = () => {
@@ -74,7 +75,6 @@ const gameOver = () => {
       app.game = "";
       $('#newGame').hide();
       $('#clearBoard').show();
-      console.log("game over!");
 };
 
 module.exports = {

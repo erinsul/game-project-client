@@ -38,8 +38,10 @@ const signOutSuccess = function(){
   uiGen.hideSignInForm();
   uiGen.hideChangePassword();
   uiGen.hideSignOut();
+  $('#clearBoard').hide();
   $('#current-message').text("You must sign in to play!");
   $('#newGame').hide();
+  $('.container').children().children('section').text("");
 };
 
 module.exports = {

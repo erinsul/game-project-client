@@ -18,6 +18,10 @@ const updateSuccess = (data) => {
   console.log(data);
 };
 
+const switchPlayer = (marker) => {
+  $('#current-message').text("It is " + marker + "'s turn!")
+}
+
 const logSingleGame = function(data) {
   console.log(data.game);
 };
@@ -31,4 +35,5 @@ module.exports = {
   updateSuccess,
   logSingleGame,
   logGames,
+  switchPlayer,
 };
