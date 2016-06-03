@@ -26,7 +26,9 @@ const logSingleGame = function(data) {
   console.log(data.game);
 };
 const logGames = function(data){
-  console.table(data.games);
+  console.log(app.user);
+  $('#num-of-games-played').text(app.user.email + ", you have played " +
+  data.games.length + " games!")
 };
 
 module.exports = {

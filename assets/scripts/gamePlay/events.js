@@ -44,16 +44,14 @@ const move = function(){
 
 const onGetGame = (event) => {
   event.preventDefault();
-  let gameIndex = api.getGameIndex();
-  if(gameIndex){
-  api.getSingleGame(gameIndex)
-  .done(ui.logSingleGame)
+  api.getGames()
+  .done(ui.logGames)
   .fail(ui.failure);
-  } else {
-    api.getGames()
-    .done(ui.logGames)
-    .fail(ui.failure);
-  }
+  // let gameIndex = api.getGameIndex();
+  // if(gameIndex){
+  // api.getSingleGame(gameIndex)
+  // .done(ui.logSingleGame)
+  // .fail(ui.failure);
 };
 
 const gameHandlers = () => {
@@ -61,7 +59,7 @@ $('#newGame').on('click', onNewGame);
 // $('#joinGame').on('click', onJoinGame);
 $('.container').children().children('section').on('click', move);
 $('#clearBoard').on('click', gameBoard.onClearBoard);
-$('#getGame').on('click', onGetGame);
+$('#getGames').on('click', onGetGame);
 };
 
 module.exports = {
