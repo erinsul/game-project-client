@@ -14,8 +14,8 @@ const onNewGame = function (event){
 const move = function(){
   if(app.game){
     //prevents moving if already occupied
-      if($(this).text() === ""){
-        //sets text on board
+      if($(this).html() === ""){
+        //sets images on board
         if(app.currentMove === "x"){
         $(this).html('<img src ="assets/images/Crossbones.jpg"/>');
       } else if (app.currentMove === "o") {
