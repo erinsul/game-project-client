@@ -40,6 +40,8 @@ const move = function(){
         break;
         }
     }
+  } else {
+    $('#current-message').append(" That isn't a valid move!")
   }
 }
 };
