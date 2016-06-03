@@ -13,6 +13,7 @@ $(() => {
   ui.hideChangePassword();
   ui.hideSignOut();
   $('#newGame').hide();
+  $('#fetch-games').hide();
   ui.uiHandlers();
   authEvents.addHandlers();
   gamePlayEvents.gameHandlers();

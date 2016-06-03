@@ -1,0 +1,31 @@
+article {
+  @include make-row();
+  section {
+    @include make-xs-column(4);
+    border: 1px solid #000;
+    height: 25vh;
+  }
+}
+
+h1,
+h3,
+form {
+  text-align: center;
+}
+
+h1,
+form {
+  clear: both;
+}
+
+header > span {
+  float: right;
+}
+
+header > button {
+  float: left;
+}
+
+.container {
+  max-width: 60%;
+}

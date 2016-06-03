@@ -23,6 +23,7 @@ const signInSuccess = function(data){
   uiGen.showSignOut();
   $('#current-message').text("You are signed in as " + app.user.email);
   $('#newGame').show();
+  $('#fetch-games').show();
 };
 
 const changePasswordSuccess = function(){
@@ -42,6 +43,8 @@ const signOutSuccess = function(){
   $('#current-message').text("You must sign in to play!");
   $('#newGame').hide();
   $('.container').children().children('section').text("");
+  $('#fetch-games').hide();
+  $('#fetch-games').children('span').text("");
 };
 
 module.exports = {

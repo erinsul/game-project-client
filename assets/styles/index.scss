@@ -1,16 +1,4 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap/';
-
-article {
-  @include make-row();
-  section {
-    @include make-xs-column(4);
-    border: 1px solid #000;
-    height: 30.333333vh;
-  }
-}
-
-h1,
-h3 {
-  text-align: center;
-}
+@import 'text';
+@import 'themes';
