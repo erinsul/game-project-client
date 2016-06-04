@@ -235,19 +235,13 @@ webpackJsonp([0],[
 	var app = __webpack_require__(6);
 	var uiGen = __webpack_require__(8);
 
-	var signUpSuccess = function signUpSuccess(data) {
-	  console.log(data);
+	var signUpSuccess = function signUpSuccess() {
 	  uiGen.hideSignUpForm();
 	  $('#current-message').text("You have successfully signed up!");
 	};
 
-	var failure = function failure(error) {
-	  console.error(error);
-	};
-
 	var signInSuccess = function signInSuccess(data) {
 	  app.user = data.user;
-	  console.log(app);
 	  uiGen.hideSignInForm();
 	  $('#sign-in-form').children().children('.remove').val("");
 	  uiGen.hideSignUpForm();
@@ -268,7 +262,6 @@ webpackJsonp([0],[
 	  app.user = null;
 	  app.currentMove = null;
 	  app.game = null;
-	  console.log(app);
 	  uiGen.hideSignUpForm();
 	  uiGen.hideSignInForm();
 	  uiGen.hideChangePassword();
@@ -280,11 +273,9 @@ webpackJsonp([0],[
 	  $('#fetch-games').hide();
 	  $('#fetch-games').children('span').text("");
 	  $('#num-of-games-played').text("How many games have you played? Want to find out? Hit");
-	  console.log(app);
 	};
 
 	module.exports = {
-	  failure: failure,
 	  signUpSuccess: signUpSuccess,
 	  signInSuccess: signInSuccess,
 	  signOutSuccess: signOutSuccess,
@@ -365,7 +356,7 @@ webpackJsonp([0],[
 
 	var onNewGame = function onNewGame(event) {
 	  event.preventDefault();
-	  api.createNewGame().done(ui.createGameSuccess).fail(ui.failure);
+	  api.createNewGame().done(ui.createGameSuccess);
 	};
 
 	var move = function move() {
@@ -382,7 +373,7 @@ webpackJsonp([0],[
 	      //sets game object
 	      var gameObject = gameBoard.setGameObject(app.currentMove, id);
 	      //sends fully updated game object
-	      api.updateGame(gameObject).done(ui.updateSuccess).fail(ui.failure);
+	      api.updateGame(gameObject);
 	      //if game over
 	      if (gameObject.game.over) {
 	        gameBoard.gameOver();
@@ -407,17 +398,11 @@ webpackJsonp([0],[
 
 	var onGetGame = function onGetGame(event) {
 	  event.preventDefault();
-	  api.getGames().done(ui.logGames).fail(ui.failure);
-	  // let gameIndex = api.getGameIndex();
-	  // if(gameIndex){
-	  // api.getSingleGame(gameIndex)
-	  // .done(ui.logSingleGame)
-	  // .fail(ui.failure);
+	  api.getGames().done(ui.logGames);
 	};
 
 	var gameHandlers = function gameHandlers() {
 	  $('#newGame').on('click', onNewGame);
-	  // $('#joinGame').on('click', onJoinGame);
 	  $('.container').children().children('section').on('click', move);
 	  $('#clearBoard').on('click', gameBoard.onClearBoard);
 	  $('#getGames').on('click', onGetGame);
@@ -513,36 +498,20 @@ webpackJsonp([0],[
 	var createGameSuccess = function createGameSuccess(data) {
 	  app.game = data.game;
 	  app.currentMove = "x";
-	  console.log(app);
-	  console.log(data);
 	  $('#current-message').text("A new game has begun! You are X.");
 	  $('#newGame').hide();
-	};
-
-	var failure = function failure(error) {
-	  console.error(error);
-	};
-
-	var updateSuccess = function updateSuccess(data) {
-	  console.log(data);
 	};
 
 	var switchPlayer = function switchPlayer(marker) {
 	  $('#current-message').text("It is " + marker + "'s turn!");
 	};
 
-	var logSingleGame = function logSingleGame(data) {
-	  console.log(data.game);
-	};
 	var logGames = function logGames(data) {
 	  $('#num-of-games-played').text(app.user.email + ", you have played " + data.games.length + " games!");
 	};
 
 	module.exports = {
 	  createGameSuccess: createGameSuccess,
-	  failure: failure,
-	  updateSuccess: updateSuccess,
-	  logSingleGame: logSingleGame,
 	  logGames: logGames,
 	  switchPlayer: switchPlayer
 	};
